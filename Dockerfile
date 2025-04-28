@@ -58,12 +58,12 @@ ENV HF_HOME=/huggingface
 # Verifica che NVCC sia disponibile
 #RUN nvcc --version
 
-RUN pip install flash-attn --no-build-isolation
+#RUN pip install flash-attn --no-build-isolation
 
-RUN source patchtransformers.sh
+#RUN source patchtransformers.sh
 
 # Espone la porta per Gradio
 EXPOSE 8080
 
 # Comando di default per avviare il server Gradio
-CMD ["python3", "gradio_app.py", "--profile", "2", "--enable_t23d", "--turbo", "--mc_algo", "mc"]
+CMD ["python3", "demo_gradio.py", "--share", "--port", "8080"]
