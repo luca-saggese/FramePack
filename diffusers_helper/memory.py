@@ -114,7 +114,7 @@ def offload_model_from_device_for_memory_preservation(model, target_device, pres
     return
 
 def full_unload_complete_models(*args):
-    unload_complete_models(*args, delete=True)
+    unload_complete_models(*args, delete=False)
 
 def unload_complete_models(*args, delete=False):
     for m in gpu_complete_modules + list(args):
