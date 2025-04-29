@@ -291,7 +291,10 @@ def worker(input_image, prompt, n_prompt, seed, total_second_length, latent_wind
                 history_pixels = soft_append_bcthw(current_pixels, history_pixels, overlapped_frames)
 
             if not high_vram:
-                unload_complete_models()
+                #unload_complete_models()
+                unload_complete_models(
+                    text_encoder, text_encoder_2, image_encoder, vae, transformer
+                )
 
             output_filename = os.path.join(outputs_folder, f'{job_id}_{total_generated_latent_frames}.mp4')
 
