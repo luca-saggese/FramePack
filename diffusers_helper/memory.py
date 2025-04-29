@@ -113,8 +113,10 @@ def offload_model_from_device_for_memory_preservation(model, target_device, pres
     torch.cuda.empty_cache()
     return
 
+def full_unload_complete_models(*args):
+    unload_complete_models(*args, delete=True)
 
-def unload_complete_models(*args, delete=True):
+def unload_complete_models(*args, delete=False):
     for m in gpu_complete_modules + list(args):
         m.to(device=cpu)
         print(f'Unloaded {m.__class__.__name__} as complete.')
