@@ -2,6 +2,7 @@
 
 
 import torch
+import gc
 
 
 cpu = torch.device('cpu')
@@ -113,13 +114,22 @@ def offload_model_from_device_for_memory_preservation(model, target_device, pres
     return
 
 
-def unload_complete_models(*args):
+def unload_complete_models(*args, delete=True):
     for m in gpu_complete_modules + list(args):
         m.to(device=cpu)
         print(f'Unloaded {m.__class__.__name__} as complete.')
 
+    if delete:
+        for model in gpu_complete_modules + list(args):
+                try:
+                    del model
+                except Exception as e:
+                    print(f"Error deleting model: {e}")
+
+    # Libera VRAM
     gpu_complete_modules.clear()
     torch.cuda.empty_cache()
+    gc.collect()
     return
 
 
