@@ -9,8 +9,8 @@ os.makedirs(STATES_FOLDER, exist_ok=True)
 print(f"State settings will be saved in: {STATES_FOLDER}")
 
 # Set HF_HOME relative to script location
-HF_HOME_FOLDER = os.path.abspath(os.path.realpath(os.path.join(os.path.dirname(__file__), './hf_download')))
-os.environ['HF_HOME'] = HF_HOME_FOLDER
+#HF_HOME_FOLDER = os.path.abspath(os.path.realpath(os.path.join(os.path.dirname(__file__), './hf_download')))
+#os.environ['HF_HOME'] = HF_HOME_FOLDER
 
 import gradio as gr
 import torch
