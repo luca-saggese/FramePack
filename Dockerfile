@@ -66,4 +66,4 @@ ENV HF_HOME=/huggingface
 EXPOSE 8080
 
 # Comando di default per avviare il server Gradio
-CMD ["python3", "demo_gradio.py", "--share", "--port", "8080"]
+CMD ["python3", "demo_gradio_f1.py", "--share", "--port", "8080"]
