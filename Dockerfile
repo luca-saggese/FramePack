@@ -45,7 +45,7 @@ RUN pip install sageattention==1.0.6
 
 RUN pip install nvidia-ml-py
 RUN pip install flash-attn --no-build-isolation
-RUN pip install xformers
+#RUN pip install xformers
 # Ora copia il resto del codice (non invalida il caching delle dipendenze)
 COPY . /app
 
