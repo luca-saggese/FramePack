@@ -40,6 +40,9 @@ COPY requirements.txt /tmp/
 # Installa le dipendenze senza invalidare la cache quando il codice cambia
 RUN pip install -r /tmp/requirements.txt
 
+
+RUN pip install sageattention==1.0.6
+
 # Ora copia il resto del codice (non invalida il caching delle dipendenze)
 COPY . /app
 
@@ -50,6 +53,7 @@ COPY . /app
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH="$CUDA_HOME/bin:$PATH"
 ENV LD_LIBRARY_PATH="$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
+
 
 # Imposta TORCH_CUDA_ARCH_LIST per evitare errori di compilazione
 ENV TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;9.0"
